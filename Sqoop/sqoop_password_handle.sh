@@ -4,6 +4,7 @@
 
 #3. Storing the password in password file
 echo -n "password" >> .password-file
+
 sqoop-eval \
 --connect "jdbc:mysql://quickstart.cloudera:3306" \
 --username employee_db \
@@ -12,6 +13,7 @@ sqoop-eval \
 
 #4. Password alias with encrypted password
 hadoop credential create mysql.employee.password -provider jceks://hdfs/user/cloudera/mysql.password.jceks
+
 sqoop-eval \
 -Dhadoop.security.credential.provider.path=jceks://hdfs/user/cloudera/mysql.password.jceks \
 --connect "jdbc:mysql://quickstart.cloudera:3306" \
